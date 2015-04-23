@@ -1,0 +1,4 @@
+name: mc_giveitems_plugin
+description: Give items plugin
+main: com.wiredlife.mcgiveitemsplugin.TestPlugin
+version: 0.0.1-SNAPSHOT

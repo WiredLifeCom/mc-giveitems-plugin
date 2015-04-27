@@ -1,4 +1,4 @@
 name: mc_plugin
-description: Give items plugin
-main: com.wiredlife.mcgiveitemsplugin.GiveItemsPlugin
+description: Plugin for operations in the Smart Playing ecosystem
+main: com.wiredlife.mcplugin.PluginInitializer
 version: 0.0.1-SNAPSHOT

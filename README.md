@@ -1,2 +1,2 @@
-# mc-giveitems-plugin
-Bukkit-based plugin for giving items to a player
+# mc-plugin
+Bukkit-based plugin for performing operations in the Smart Playing ecosystem

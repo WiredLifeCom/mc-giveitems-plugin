@@ -2,7 +2,6 @@ package com.wiredlife.mcplugin.listener;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -32,23 +31,17 @@ public class GiveItemsListener implements Listener {
 			Data data = Data.fromJson(file);
 			Inventory inventory = data.getUser().getInventory();
 
-			// Get the resources and items from the local files. The key
-			// represents the string representation of a resource/item and the
-			// value is the amount of that resource/item
-			Map<String, Integer> resources = storageController.getResources(inventory);
-			Map<String, Integer> items = storageController.getItems(inventory);
-
 			// The player's inventory
 			PlayerInventory playerInventory = player.getInventory();
 
 			// Loop through every resource and item, and add these to the player
 			// inventory
-			for (String key : resources.keySet()) {
-				ItemStack itemStack = new ItemStack(storageController.getMaterialMappings().get(key), resources.get(key));
+			for (String resource : inventory.getResources()) {
+				ItemStack itemStack = new ItemStack(storageController.getMaterialMappings().get(resource), 1);
 				playerInventory.addItem(itemStack);
 			}
-			for (String key : items.keySet()) {
-				ItemStack itemStack = new ItemStack(storageController.getMaterialMappings().get(key), items.get(key));
+			for (String item : inventory.getItems()) {
+				ItemStack itemStack = new ItemStack(storageController.getMaterialMappings().get(item), 1);
 				playerInventory.addItem(itemStack);
 			}
 		}

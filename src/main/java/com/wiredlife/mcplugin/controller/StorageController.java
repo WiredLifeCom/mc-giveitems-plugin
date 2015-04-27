@@ -12,11 +12,9 @@ import java.util.Map;
 
 import org.bukkit.Material;
 
-import com.wiredlife.jsonformatjava.model.Inventory;
-
 public class StorageController {
 
-	Map<String, Material> materialMappings;
+	private Map<String, Material> materialMappings;
 
 	public StorageController() {
 		this.materialMappings = new HashMap<String, Material>();
@@ -52,29 +50,29 @@ public class StorageController {
 		}
 	}
 
-	public Map<String, Integer> getResources(Inventory inventory) {
-		Map<String, Integer> resources = new HashMap<String, Integer>();
-		for (String resource : inventory.getResources()) {
-			if (resources.containsKey(resource)) {
-				resources.put(resource, resources.get(resource) + 1);
-			} else {
-				resources.put(resource, 1);
-			}
-		}
-		return resources;
-	}
-
-	public Map<String, Integer> getItems(Inventory inventory) {
-		Map<String, Integer> items = new HashMap<String, Integer>();
-		for (String item : inventory.getItems()) {
-			if (items.containsKey(item)) {
-				items.put(item, items.get(item) + 1);
-			} else {
-				items.put(item, 1);
-			}
-		}
-		return items;
-	}
+	// public Map<String, Integer> getResources(Inventory inventory) {
+	// Map<String, Integer> resources = new HashMap<String, Integer>();
+	// for (String resource : inventory.getResources()) {
+	// if (resources.containsKey(resource)) {
+	// resources.put(resource, resources.get(resource) + 1);
+	// } else {
+	// resources.put(resource, 1);
+	// }
+	// }
+	// return resources;
+	// }
+	//
+	// public Map<String, Integer> getItems(Inventory inventory) {
+	// Map<String, Integer> items = new HashMap<String, Integer>();
+	// for (String item : inventory.getItems()) {
+	// if (items.containsKey(item)) {
+	// items.put(item, items.get(item) + 1);
+	// } else {
+	// items.put(item, 1);
+	// }
+	// }
+	// return items;
+	// }
 
 	public Map<String, Material> getMaterialMappings() {
 		return this.materialMappings;

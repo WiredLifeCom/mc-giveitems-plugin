@@ -14,19 +14,24 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 public class GiveItemsListener implements Listener {
-	
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent evt) {
         Map<String, Material> map = new HashMap<String, Material>();
         map.put("Dirt", Material.DIRT);
         map.put("Stone", Material.STONE);
     	
-    	Player player = evt.getPlayer(); // The player who joined
-        System.out.println("User joined: " + player.getName());
-        PlayerInventory inventory = player.getInventory(); // The player's inventory
-        ItemStack itemStack = new ItemStack(map.get("Dirt"), 2); // A small stack of dirt
-     
-        inventory.addItem(itemStack); // Adds a stack of dirt to the player's inventory
+		// The player who joined
+		Player player = event.getPlayer();
+		System.out.println("User joined: " + player.getName());
+
+		// The player's inventory
+		PlayerInventory inventory = player.getInventory();
+
+		// A small stack of dirt
+		ItemStack itemStack = new ItemStack(map.get("Dirt"), 2);
+
+		// Adds a stack of dirt to the player's inventory
+		inventory.addItem(itemStack);
     }
-	
 }

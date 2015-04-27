@@ -1,8 +1,8 @@
-package com.wiredlife.mcgiveitemsplugin;
+package com.wiredlife.mcplugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.wiredlife.mcgiveitemsplugin.listener.GiveItemsListener;
+import com.wiredlife.mcplugin.listener.GiveItemsListener;
 
 public class GiveItemsPlugin extends JavaPlugin {
 

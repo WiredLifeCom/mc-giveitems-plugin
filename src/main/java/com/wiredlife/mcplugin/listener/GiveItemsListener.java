@@ -1,4 +1,4 @@
-package com.wiredlife.mcgiveitemsplugin.listener;
+package com.wiredlife.mcplugin.listener;
 
 import java.io.IOException;
 import java.util.List;

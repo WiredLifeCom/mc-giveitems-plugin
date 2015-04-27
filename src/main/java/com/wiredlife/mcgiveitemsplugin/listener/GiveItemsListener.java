@@ -16,7 +16,7 @@ import org.bukkit.inventory.PlayerInventory;
 public class GiveItemsListener implements Listener {
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent evt) {
+    public void onPlayerJoin(PlayerJoinEvent event) {
         Map<String, Material> map = new HashMap<String, Material>();
         map.put("Dirt", Material.DIRT);
         map.put("Stone", Material.STONE);

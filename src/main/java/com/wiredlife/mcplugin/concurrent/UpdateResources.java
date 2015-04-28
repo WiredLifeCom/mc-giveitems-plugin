@@ -5,11 +5,8 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 
 import com.wiredlife.jsonformatjava.model.Data;
-import com.wiredlife.jsonformatjava.model.Inventory;
 import com.wiredlife.mcplugin.controller.StorageController;
 
 public class UpdateResources implements Runnable {
@@ -28,19 +25,19 @@ public class UpdateResources implements Runnable {
 			}
 		}
 	}
-	
+
 	public synchronized void update() throws IOException {
 		StorageController storageController = new StorageController();
-		
-		for (Player player: Bukkit.getServer().getOnlinePlayers()) {
+
+		for (Player player : Bukkit.getServer().getOnlinePlayers()) {
 			System.out.println("Updating resources for player " + player.getName());
-			
-			List<String> files = storageController.getLocalFilesContents(player.getName()); 
-			for (String file : files) {
-				Data data = Data.fromJson(file);
+
+			List<String> unloads = storageController.getUnloads(player.getName());
+			for (String unload : unloads) {
+				Data data = Data.fromJson(unload);
 				storageController.updateResources(player, data);
 			}
 		}
 	}
-	
+
 }

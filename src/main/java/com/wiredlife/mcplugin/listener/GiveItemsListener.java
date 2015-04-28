@@ -25,25 +25,10 @@ public class GiveItemsListener implements Listener {
 
 		// Loop through all the local files
 		List<String> files = storageController.getLocalFilesContents(player.getName());
-		System.out.println(files);
-
+		
 		for (String file : files) {
 			Data data = Data.fromJson(file);
-			Inventory inventory = data.getUser().getInventory();
-
-			// The player's inventory
-			PlayerInventory playerInventory = player.getInventory();
-
-			// Loop through every resource and item, and add these to the player
-			// inventory
-			for (String resource : inventory.getResources()) {
-				ItemStack itemStack = new ItemStack(storageController.getMaterialMappings().get(resource), 1);
-				playerInventory.addItem(itemStack);
-			}
-			for (String item : inventory.getItems()) {
-				ItemStack itemStack = new ItemStack(storageController.getMaterialMappings().get(item), 1);
-				playerInventory.addItem(itemStack);
-			}
+			storageController.updateResources(player, data);
 		}
 		// storageController.deleteLocalFiles(player.getName());
 	}

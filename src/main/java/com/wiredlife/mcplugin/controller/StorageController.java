@@ -9,18 +9,17 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.wiredlife.jsonformatjava.dba.SQLiteDBA;
-import com.wiredlife.jsonformatjava.model.Data;
-import com.wiredlife.jsonformatjava.model.Inventory;
+import com.wiredlife.jsonformatjava.dba.unload.UnloadDBA;
+import com.wiredlife.jsonformatjava.model.unload.Unload;
 
 public class StorageController {
 
-	private SQLiteDBA dba;
+	private UnloadDBA dba;
 
 	private Map<String, Material> materialMappings;
 
 	public StorageController() {
-		this.dba = new SQLiteDBA("../data/database.db");
+		this.dba = new UnloadDBA("../data/database.db");
 
 		this.materialMappings = new HashMap<String, Material>();
 		this.materialMappings.put("Dirt", Material.DIRT);
@@ -29,7 +28,7 @@ public class StorageController {
 		this.materialMappings.put("WoodenAxe", Material.WOOD_AXE);
 	}
 
-	public List<String> getUnloads(String username) {
+	public List<Unload> getUnloads(String username) {
 		return this.dba.getUnloads(username);
 	}
 
@@ -37,21 +36,16 @@ public class StorageController {
 		this.dba.deleteUnloads(username);
 	}
 
-	public void updateResources(Player player, Data data) {
-		// Get the data inventory
-		Inventory inventory = data.getUser().getInventory();
+	public void updateResources(Player player, Unload unload) {
+		// Get the materials
+		List<String> materials = unload.getUser().getMaterials();
 
 		// The player's inventory
 		PlayerInventory playerInventory = player.getInventory();
 
-		// Loop through every resource and item, and add these to the player
-		// inventory
-		for (String resource : inventory.getResources()) {
-			ItemStack itemStack = new ItemStack(getMaterialMappings().get(resource), 1);
-			playerInventory.addItem(itemStack);
-		}
-		for (String item : inventory.getItems()) {
-			ItemStack itemStack = new ItemStack(getMaterialMappings().get(item), 1);
+		// Loop through every material and add these to the player inventory
+		for (String material : materials) {
+			ItemStack itemStack = new ItemStack(getMaterialMappings().get(material), 1);
 			playerInventory.addItem(itemStack);
 		}
 	}

@@ -8,7 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import com.wiredlife.jsonformatjava.model.Data;
+import com.wiredlife.jsonformatjava.model.unload.Unload;
 import com.wiredlife.mcplugin.controller.StorageController;
 
 public class GiveItemsListener implements Listener {
@@ -21,11 +21,10 @@ public class GiveItemsListener implements Listener {
 		Player player = event.getPlayer();
 
 		// Loop through all the local files
-		List<String> files = storageController.getUnloads(player.getName());
+		List<Unload> unloads = storageController.getUnloads(player.getName());
 
-		for (String file : files) {
-			Data data = Data.fromJson(file);
-			storageController.updateResources(player, data);
+		for (Unload unload : unloads) {
+			storageController.updateResources(player, unload);
 		}
 		// storageController.deleteUnloads(player.getName());
 	}

@@ -46,7 +46,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.wiredlife.mcplugin.GiveItemsPlugin</mainClass>
+							<mainClass>com.wiredlife.mcplugin.PluginInitializer</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

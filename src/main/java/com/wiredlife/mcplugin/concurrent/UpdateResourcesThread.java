@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import com.wiredlife.jsonformatjava.model.unload.Unload;
 import com.wiredlife.mcplugin.controller.StorageController;
 
-public class UpdateResources implements Runnable {
+public class UpdateResourcesThread implements Runnable {
 
 	@Override
 	public void run() {

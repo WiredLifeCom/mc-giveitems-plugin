@@ -2,8 +2,8 @@ package com.wiredlife.mcplugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.wiredlife.mcplugin.concurrent.UpdateResources;
-import com.wiredlife.mcplugin.listener.GiveItemsListener;
+import com.wiredlife.mcplugin.concurrent.UpdateResourcesThread;
+import com.wiredlife.mcplugin.listener.OnJoinUpdateResourcesListener;
 
 public class PluginInitializer extends JavaPlugin {
 
@@ -11,9 +11,9 @@ public class PluginInitializer extends JavaPlugin {
 	public void onEnable() {
 		// TODO Insert logic to be performed when the plugin is enabled
 
-		getServer().getPluginManager().registerEvents(new GiveItemsListener(), this);
+		getServer().getPluginManager().registerEvents(new OnJoinUpdateResourcesListener(), this);
 		
-		Thread updateResourcesThread = new Thread(new UpdateResources());
+		Thread updateResourcesThread = new Thread(new UpdateResourcesThread());
 		updateResourcesThread.start();
 	}
 

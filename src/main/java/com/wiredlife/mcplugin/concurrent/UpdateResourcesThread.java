@@ -30,7 +30,6 @@ public class UpdateResourcesThread implements Runnable {
 			System.out.println("Updating resources for player " + player.getName());
 
 			List<Unload> unloads = storageController.getUnloads(player.getName());
-			System.out.println(unloads);
 			for (Unload unload : unloads) {
 				storageController.updateResources(player, unload);
 			}

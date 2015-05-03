@@ -36,7 +36,7 @@ public class StorageController {
 		this.dba.deleteUnloads(username);
 	}
 
-	public void updateResources(Player player, Unload unload) {
+	public synchronized void updateResources(Player player, Unload unload) {
 		// Get the materials
 		List<String> materials = unload.getUser().getMaterials();
 

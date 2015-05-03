@@ -3,6 +3,7 @@ package com.wiredlife.mcplugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.wiredlife.mcplugin.concurrent.UpdateResourcesThread;
+import com.wiredlife.mcplugin.listener.OnHitSendPokeListener;
 import com.wiredlife.mcplugin.listener.OnJoinUpdateResourcesListener;
 
 public class PluginInitializer extends JavaPlugin {
@@ -12,7 +13,8 @@ public class PluginInitializer extends JavaPlugin {
 		// TODO Insert logic to be performed when the plugin is enabled
 
 		getServer().getPluginManager().registerEvents(new OnJoinUpdateResourcesListener(), this);
-		
+		getServer().getPluginManager().registerEvents(new OnHitSendPokeListener(), this);
+
 		Thread updateResourcesThread = new Thread(new UpdateResourcesThread());
 		updateResourcesThread.start();
 	}

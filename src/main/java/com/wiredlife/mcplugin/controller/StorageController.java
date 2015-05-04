@@ -14,18 +14,20 @@ import com.wiredlife.jsonformatjava.model.unload.Unload;
 
 public class StorageController {
 
+	private static Map<String, Material> materialMappings;
+
 	private UnloadDBA dba;
 
-	private Map<String, Material> materialMappings;
-
 	public StorageController() {
-		this.dba = new UnloadDBA("../data/database.db");
+		if (materialMappings == null) {
+			materialMappings = new HashMap<String, Material>();
+			materialMappings.put("Dirt", Material.DIRT);
+			materialMappings.put("Stone", Material.STONE);
+			materialMappings.put("DiamondPickaxe", Material.DIAMOND_PICKAXE);
+			materialMappings.put("WoodenAxe", Material.WOOD_AXE);
+		}
 
-		this.materialMappings = new HashMap<String, Material>();
-		this.materialMappings.put("Dirt", Material.DIRT);
-		this.materialMappings.put("Stone", Material.STONE);
-		this.materialMappings.put("DiamondPickaxe", Material.DIAMOND_PICKAXE);
-		this.materialMappings.put("WoodenAxe", Material.WOOD_AXE);
+		this.dba = new UnloadDBA("../data/database.db");
 	}
 
 	public List<Unload> getUnloads(String username) {
@@ -51,7 +53,7 @@ public class StorageController {
 	}
 
 	public Map<String, Material> getMaterialMappings() {
-		return this.materialMappings;
+		return StorageController.materialMappings;
 	}
 
 }

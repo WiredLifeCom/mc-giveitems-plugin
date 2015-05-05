@@ -8,11 +8,13 @@ import org.bukkit.entity.Player;
 import com.wiredlife.jsonformatjava.model.unload.Unload;
 import com.wiredlife.mcplugin.controller.StorageController;
 
-public class UpdateResourcesThread implements Runnable {
+public class UpdateResourcesRunnable implements Runnable {
+
+	private volatile boolean running = true;
 
 	@Override
 	public void run() {
-		while (true) {
+		while (this.running) {
 			try {
 				update();
 				Thread.sleep(10000);
@@ -34,6 +36,10 @@ public class UpdateResourcesThread implements Runnable {
 				storageController.updateResources(player, unload);
 			}
 		}
+	}
+
+	public synchronized void terminate() {
+		this.running = false;
 	}
 
 }

@@ -13,11 +13,11 @@ public class OnHitSendPokeListener implements Listener {
 		if (e.getCause() == DamageCause.ENTITY_ATTACK) {
 			if (e.getEntity() instanceof Player && e.getDamager() instanceof Player) {
 				e.setDamage(0);
-				
-				Player player = (Player) e.getEntity();
-				Player damager = (Player) e.getDamager();
 
-				System.out.println(damager.getName() + " is poking " + player.getName());
+				Player poker = (Player) e.getDamager();
+				Player receiver = (Player) e.getEntity();
+
+				System.out.println(poker.getName() + " is poking " + receiver.getName());
 			}
 		}
 	}

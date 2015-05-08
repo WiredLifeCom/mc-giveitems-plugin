@@ -40,7 +40,7 @@ public class StorageController {
 
 	public synchronized void updateResources(Player player, Unload unload) {
 		// Get the materials
-		List<String> materials = unload.getUser().getMaterials();
+		List<String> materials = unload.getMaterials();
 
 		// The player's inventory
 		PlayerInventory playerInventory = player.getInventory();

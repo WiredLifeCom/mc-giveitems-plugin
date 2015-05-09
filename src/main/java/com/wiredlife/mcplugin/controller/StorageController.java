@@ -18,7 +18,7 @@ public class StorageController {
 
 	private UnloadDBA dba;
 
-	public StorageController() {
+	public StorageController(String database) {
 		if (materialMappings == null) {
 			materialMappings = new HashMap<String, Material>();
 			materialMappings.put("Dirt", Material.DIRT);
@@ -27,7 +27,7 @@ public class StorageController {
 			materialMappings.put("WoodenAxe", Material.WOOD_AXE);
 		}
 
-		this.dba = new UnloadDBA("../data/database.db");
+		this.dba = new UnloadDBA(database);
 	}
 
 	public List<Unload> getUnloads(String username) {

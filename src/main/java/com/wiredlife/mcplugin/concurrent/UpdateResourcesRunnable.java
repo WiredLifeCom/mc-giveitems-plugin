@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.wiredlife.jsonformatjava.model.unload.Unload;
+import com.wiredlife.mcplugin.config.Config;
 import com.wiredlife.mcplugin.controller.StorageController;
 
 public class UpdateResourcesRunnable implements Runnable {
@@ -25,8 +26,8 @@ public class UpdateResourcesRunnable implements Runnable {
 		}
 	}
 
-	public synchronized void update() {
-		StorageController storageController = new StorageController();
+	private synchronized void update() {
+		StorageController storageController = new StorageController(Config.getDatabase());
 
 		for (Player player : Bukkit.getServer().getOnlinePlayers()) {
 			System.out.println("Updating resources for player " + player.getName());

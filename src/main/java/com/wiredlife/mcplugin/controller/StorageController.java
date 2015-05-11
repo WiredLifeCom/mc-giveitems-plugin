@@ -38,6 +38,10 @@ public class StorageController {
 		this.dba.deleteUnloads(username);
 	}
 
+	public void close() {
+		this.dba.close();
+	}
+
 	public synchronized void updateResources(Player player, Unload unload) {
 		// Get the materials
 		List<String> materials = unload.getMaterials();

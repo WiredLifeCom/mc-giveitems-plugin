@@ -9,14 +9,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.wiredlife.jsonformatjava.dba.unload.UnloadDBA;
+import com.wiredlife.jsonformatjava.dba.DBA;
 import com.wiredlife.jsonformatjava.model.unload.Unload;
 
 public class StorageController {
 
 	private static Map<String, Material> materialMappings;
 
-	private UnloadDBA dba;
+	private DBA dba;
 
 	public StorageController(String database) {
 		if (materialMappings == null) {
@@ -27,7 +27,7 @@ public class StorageController {
 			materialMappings.put("WoodenAxe", Material.WOOD_AXE);
 		}
 
-		this.dba = new UnloadDBA(database);
+		this.dba = new DBA(database);
 	}
 
 	public List<Unload> getUnloads(String username) {

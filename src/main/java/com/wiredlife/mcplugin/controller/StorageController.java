@@ -38,7 +38,7 @@ public class StorageController {
 		this.dba.deleteUnloads(username);
 	}
 
-	public void close() {
+	public void closeDatabaseConnection() {
 		this.dba.close();
 	}
 

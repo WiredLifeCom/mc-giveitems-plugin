@@ -27,7 +27,7 @@ public class OnJoinUpdateResourcesListener implements Listener {
 		for (Unload unload : unloads) {
 			storageController.updateResources(player, unload);
 		}
-		storageController.close();
+		storageController.closeDatabaseConnection();
 		// storageController.deleteUnloads(player.getName());
 	}
 }

@@ -37,7 +37,7 @@ public class UpdateResourcesRunnable implements Runnable {
 				storageController.updateResources(player, unload);
 			}
 		}
-		storageController.close();
+		storageController.closeDatabaseConnection();
 	}
 
 	public synchronized void terminate() {

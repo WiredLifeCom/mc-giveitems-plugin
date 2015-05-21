@@ -28,8 +28,6 @@ public class UpdateResourcesRunnable implements Runnable {
 		StorageController storageController = new StorageController(Config.getValues().get("database"));
 
 		for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-			System.out.println("Updating resources for player " + player.getName());
-
 			List<Unload> unloads = storageController.getUnloads(player.getName());
 			for (Unload unload : unloads) {
 				storageController.updateMaterials(player, unload);

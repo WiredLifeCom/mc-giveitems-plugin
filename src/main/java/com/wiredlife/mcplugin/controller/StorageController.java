@@ -82,8 +82,12 @@ public class StorageController {
 	}
 
 	public synchronized void updateMaterials(Player player, Unload unload) {
+		System.out.println("Updating resources for player " + player.getName());
+		
 		// Get the materials
 		List<String> materials = unload.getMaterials();
+		
+		System.out.println("Adding " + materials.toString() + " to player " + player.getName());
 
 		// The player's inventory
 		PlayerInventory playerInventory = player.getInventory();

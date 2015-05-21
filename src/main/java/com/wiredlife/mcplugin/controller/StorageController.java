@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 import com.wiredlife.jsonformatjava.dao.DAO;
+import com.wiredlife.jsonformatjava.model.status.OnlineStatus;
 import com.wiredlife.jsonformatjava.model.unload.Unload;
 
 public class StorageController {
@@ -39,6 +40,15 @@ public class StorageController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
+		}
+	}
+	
+	public void addOnlineStatus(OnlineStatus onlineStatus) {
+		try {
+			this.dao.addOnlineStatus(onlineStatus);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

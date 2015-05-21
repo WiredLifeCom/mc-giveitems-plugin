@@ -1,5 +1,7 @@
 package com.wiredlife.mcplugin.controller;
 
+import java.beans.PropertyVetoException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,14 +11,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.wiredlife.jsonformatjava.dba.DBA;
+import com.wiredlife.jsonformatjava.dao.DAO;
 import com.wiredlife.jsonformatjava.model.unload.Unload;
 
 public class StorageController {
 
 	private static Map<String, Material> materialMappings;
 
-	private DBA dba;
+	private DAO dao;
 
 	public StorageController(String database) {
 		if (materialMappings == null) {
@@ -27,15 +29,36 @@ public class StorageController {
 			materialMappings.put("WoodenAxe", Material.WOOD_AXE);
 		}
 
-		this.dba = new DBA(database);
+		try {
+			this.dao = new DAO(database);
+		} catch (PropertyVetoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		}
 	}
 
 	public List<Unload> getUnloads(String username) {
-		return this.dba.getUnloads(username);
+		try {
+			return this.dao.getUnloads(username);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public void deleteUnloads(String username) {
-		this.dba.deleteUnloads(username);
+		try {
+			this.dao.deleteUnloads(username);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public synchronized void updateResources(Player player, Unload unload) {

@@ -16,8 +16,8 @@ public class PluginInitializer extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		// TODO Insert logic to be performed when the plugin is enabled
-
-		Config.setDatabase("../data/database.sqlite");
+		
+		Config.getValues().put("database", "../data/database.sqlite");
 
 		getServer().getPluginManager().registerEvents(new OnJoinUpdateResourcesListener(), this);
 		getServer().getPluginManager().registerEvents(new OnHitSendPokeListener(), this);

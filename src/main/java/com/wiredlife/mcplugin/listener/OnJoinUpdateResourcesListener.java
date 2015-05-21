@@ -16,7 +16,7 @@ public class OnJoinUpdateResourcesListener implements Listener {
 
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) throws IOException {
-		StorageController storageController = new StorageController(Config.getDatabase());
+		StorageController storageController = new StorageController(Config.getValues().get("database"));
 
 		// The player who joined
 		Player player = event.getPlayer();

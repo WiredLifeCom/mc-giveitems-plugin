@@ -1,15 +1,20 @@
 package com.wiredlife.mcplugin.config;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Config {
 
-	private static String database;
+	private static Map<String, String> values;
 
-	public static String getDatabase() {
-		return database;
+	static {
+		if (values == null) {
+			values = new HashMap<String, String>();
+		}
 	}
 
-	public static void setDatabase(String database) {
-		Config.database = database;
+	public static Map<String, String> getValues() {
+		return values;
 	}
 
 }

@@ -27,7 +27,7 @@ public class UpdateResourcesRunnable implements Runnable {
 	}
 
 	private synchronized void update() {
-		StorageController storageController = new StorageController(Config.getDatabase());
+		StorageController storageController = new StorageController(Config.getValues().get("database"));
 
 		for (Player player : Bukkit.getServer().getOnlinePlayers()) {
 			System.out.println("Updating resources for player " + player.getName());

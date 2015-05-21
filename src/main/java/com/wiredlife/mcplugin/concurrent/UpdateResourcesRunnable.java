@@ -32,7 +32,7 @@ public class UpdateResourcesRunnable implements Runnable {
 
 			List<Unload> unloads = storageController.getUnloads(player.getName());
 			for (Unload unload : unloads) {
-				storageController.updateResources(player, unload);
+				storageController.updateMaterials(player, unload);
 			}
 		}
 	}

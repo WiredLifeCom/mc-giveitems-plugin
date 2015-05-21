@@ -25,8 +25,7 @@ public class OnJoinUpdateResourcesListener implements Listener {
 		List<Unload> unloads = storageController.getUnloads(player.getName());
 
 		for (Unload unload : unloads) {
-			storageController.updateResources(player, unload);
+			storageController.updateMaterials(player, unload);
 		}
-		// storageController.deleteUnloads(player.getName());
 	}
 }

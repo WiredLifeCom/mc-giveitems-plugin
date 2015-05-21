@@ -71,8 +71,17 @@ public class StorageController {
 			e.printStackTrace();
 		}
 	}
+	
+	public void deleteUnload(Unload unload) {
+		try {
+			this.dao.deleteUnload(unload);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
-	public synchronized void updateResources(Player player, Unload unload) {
+	public synchronized void updateMaterials(Player player, Unload unload) {
 		// Get the materials
 		List<String> materials = unload.getMaterials();
 
@@ -83,6 +92,13 @@ public class StorageController {
 		for (String material : materials) {
 			ItemStack itemStack = new ItemStack(getMaterialMappings().get(material), 1);
 			playerInventory.addItem(itemStack);
+		}
+		
+		try {
+			this.dao.deleteUnload(unload);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

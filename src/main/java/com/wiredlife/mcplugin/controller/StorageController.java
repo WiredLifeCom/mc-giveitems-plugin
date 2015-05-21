@@ -43,7 +43,7 @@ public class StorageController {
 			return;
 		}
 	}
-	
+
 	public void addOnlineStatus(OnlineStatus onlineStatus) {
 		try {
 			this.dao.addOnlineStatus(onlineStatus);
@@ -51,6 +51,16 @@ public class StorageController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public OnlineStatus getOnlineStatus(String username) {
+		try {
+			this.dao.getOnlineStatus(username);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public List<Unload> getUnloads(String username) {
@@ -71,7 +81,7 @@ public class StorageController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void deleteUnload(Unload unload) {
 		try {
 			this.dao.deleteUnload(unload);
@@ -83,10 +93,10 @@ public class StorageController {
 
 	public synchronized void updateMaterials(Player player, Unload unload) {
 		System.out.println("Updating resources for player " + player.getName());
-		
+
 		// Get the materials
 		List<String> materials = unload.getMaterials();
-		
+
 		System.out.println("Adding " + materials.toString() + " to player " + player.getName());
 
 		// The player's inventory
@@ -97,7 +107,7 @@ public class StorageController {
 			ItemStack itemStack = new ItemStack(getMaterialMappings().get(material), 1);
 			playerInventory.addItem(itemStack);
 		}
-		
+
 		try {
 			this.dao.deleteUnload(unload);
 		} catch (SQLException e) {

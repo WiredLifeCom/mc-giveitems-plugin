@@ -10,11 +10,12 @@ import com.wiredlife.mcplugin.config.Config;
 import com.wiredlife.mcplugin.controller.StorageController;
 
 public class UpdateMaterialsRunnable implements Runnable {
-	
+
 	@Override
 	public void run() {
 		while (!Thread.currentThread().isInterrupted()) {
 			try {
+				System.out.println("Running UpdateMaterials...");
 				update();
 				Thread.sleep(10000);
 			} catch (InterruptedException e) {

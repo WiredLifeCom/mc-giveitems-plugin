@@ -15,6 +15,7 @@ public class MoveToPoolOfDreamsRunnable implements Runnable {
 	public void run() {
 		while (!Thread.currentThread().isInterrupted()) {
 			try {
+				System.out.println("Running MoveToPoolOfDreams...");
 				moveTo();
 				Thread.sleep(20000);
 			} catch (InterruptedException e) {

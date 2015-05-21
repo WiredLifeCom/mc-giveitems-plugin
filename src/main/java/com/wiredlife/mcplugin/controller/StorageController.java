@@ -55,7 +55,7 @@ public class StorageController {
 
 	public OnlineStatus getOnlineStatus(String username) {
 		try {
-			this.dao.getOnlineStatus(username);
+			return this.dao.getOnlineStatus(username);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

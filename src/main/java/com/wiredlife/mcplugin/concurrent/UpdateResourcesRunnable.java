@@ -10,12 +10,10 @@ import com.wiredlife.mcplugin.config.Config;
 import com.wiredlife.mcplugin.controller.StorageController;
 
 public class UpdateResourcesRunnable implements Runnable {
-
-	private volatile boolean running = true;
-
+	
 	@Override
 	public void run() {
-		while (this.running) {
+		while (!Thread.currentThread().isInterrupted()) {
 			try {
 				update();
 				Thread.sleep(10000);
@@ -39,8 +37,8 @@ public class UpdateResourcesRunnable implements Runnable {
 		}
 	}
 
-	public synchronized void terminate() {
-		this.running = false;
+	public synchronized void interrupt() {
+		Thread.currentThread().interrupt();
 	}
 
 }

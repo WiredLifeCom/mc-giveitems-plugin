@@ -32,7 +32,7 @@ public class PluginInitializer extends JavaPlugin {
 	public void onDisable() {
 		// TODO Insert logic to be performed when the plugin is disabled
 
-		this.updateResourcesRunnable.terminate();
+		this.updateResourcesRunnable.interrupt();
 		try {
 			this.updateResourcesThread.join();
 		} catch (InterruptedException e) {

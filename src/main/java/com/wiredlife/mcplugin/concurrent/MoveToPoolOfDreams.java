@@ -9,38 +9,27 @@ import com.wiredlife.jsonformatjava.model.status.OnlineStatus;
 import com.wiredlife.mcplugin.config.Config;
 import com.wiredlife.mcplugin.controller.StorageController;
 
-public class MoveToPoolOfDreamsRunnable implements Runnable {
+public class MoveToPoolOfDreams extends AbstractRunnable {
 
-	@Override
-	public void run() {
-		while (!Thread.currentThread().isInterrupted()) {
-			try {
-				System.out.println("Running MoveToPoolOfDreams...");
-				moveTo();
-				Thread.sleep(20000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+	private StorageController storageController;
+
+	public MoveToPoolOfDreams() {
+		this.storageController = new StorageController(Config.getValues().get("database"));
 	}
 
-	private synchronized void moveTo() {
-		StorageController storageController = new StorageController(Config.getValues().get("database"));
+	@Override
+	public void doOperation() {
+		System.out.println("Running MoveToPoolOfDreams...");
 
 		Server server = Bukkit.getServer();
 		for (Player player : server.getOnlinePlayers()) {
-			OnlineStatus onlineStatus = storageController.getOnlineStatus(player.getName());
+			OnlineStatus onlineStatus = this.storageController.getOnlineStatus(player.getName());
 			if (onlineStatus != null && !onlineStatus.isHome()) {
 				System.out.println("Moving player " + player.getName() + " to the Pool of Dreams");
 				Location location = new Location(server.getWorld("DevTest"), -15, 61, -215);
 				player.teleport(location);
 			}
 		}
-	}
-
-	public synchronized void interrupt() {
-		Thread.currentThread().interrupt();
 	}
 
 }

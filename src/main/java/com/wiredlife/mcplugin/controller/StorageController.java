@@ -27,8 +27,8 @@ public class StorageController {
 			materialMappings.put("Dirt", Material.DIRT);
 			materialMappings.put("Stone", Material.STONE);
 			materialMappings.put("Wood", Material.WOOD);
-			materialMappings.put("DiamondPickaxe", Material.DIAMOND_PICKAXE);
-			materialMappings.put("WoodenAxe", Material.WOOD_AXE);
+			// materialMappings.put("DiamondPickaxe", Material.DIAMOND_PICKAXE);
+			// materialMappings.put("WoodenAxe", Material.WOOD_AXE);
 		}
 
 		try {

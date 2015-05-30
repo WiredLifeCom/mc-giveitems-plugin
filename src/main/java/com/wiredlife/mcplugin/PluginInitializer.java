@@ -17,8 +17,6 @@ public class PluginInitializer extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		// TODO Insert logic to be performed when the plugin is enabled
-
 		Config.getValues().put("database", "../data/database.sqlite");
 
 		getServer().getPluginManager().registerEvents(new OnJoinUpdateResourcesListener(), this);
@@ -34,8 +32,6 @@ public class PluginInitializer extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		// TODO Insert logic to be performed when the plugin is disabled
-
 		this.runnableContainer.interrupt();
 		try {
 			this.runnableContainerThread.join();

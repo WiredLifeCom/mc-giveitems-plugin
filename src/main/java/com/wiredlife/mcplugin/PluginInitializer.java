@@ -36,7 +36,6 @@ public class PluginInitializer extends JavaPlugin {
 		try {
 			this.runnableContainerThread.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

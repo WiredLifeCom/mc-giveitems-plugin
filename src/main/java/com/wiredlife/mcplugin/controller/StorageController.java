@@ -34,11 +34,9 @@ public class StorageController {
 		try {
 			this.dao = new DAO(database);
 		} catch (PropertyVetoException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
 		}
@@ -48,7 +46,6 @@ public class StorageController {
 		try {
 			this.dao.addOnlineStatus(onlineStatus);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -57,7 +54,6 @@ public class StorageController {
 		try {
 			return this.dao.getOnlineStatus(username);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -67,7 +63,6 @@ public class StorageController {
 		try {
 			return this.dao.getUnloads(username);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -77,7 +72,6 @@ public class StorageController {
 		try {
 			this.dao.deleteUnloads(username);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -86,7 +80,6 @@ public class StorageController {
 		try {
 			this.dao.deleteUnload(unload);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -111,7 +104,6 @@ public class StorageController {
 		try {
 			this.dao.deleteUnload(unload);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
